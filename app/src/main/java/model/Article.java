@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Alexandru on 4/22/2017.
@@ -12,6 +11,8 @@ public class Article {
     private String title;
     private Date dateOfArticle;
     private String url;
+    private String author;
+    private String sectionName;
 
     public Article() {
     }
@@ -38,6 +39,22 @@ public class Article {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
     }
 }
 
