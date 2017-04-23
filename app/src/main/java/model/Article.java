@@ -82,5 +82,18 @@ public class Article {
     public void setThumnailUrl(String thumnailUrl) {
         this.thumnailUrl = thumnailUrl;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", dateOfArticle=" + dateOfArticle +
+                ", url='" + url + '\'' +
+                ", author='" + author + '\'' +
+                ", sectionName='" + sectionName + '\'' +
+                ", quickInfo='" + quickInfo + '\'' +
+                ", thumnailUrl='" + thumnailUrl + '\'' +
+                '}';
+    }
 }
 

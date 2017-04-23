@@ -67,7 +67,7 @@ public class ArticleService {
                 article.setUrl(temp.getString("webUrl"));
                 temp2 = temp.getJSONObject("fields");
                 article.setQuickInfo(temp2.getString("trailText"));
-                article.setThumnailUrl(temp2.getString("thumbnail"));
+                //article.setThumnailUrl(temp2.getString("thumbnail"));
                 Log.e("date " + i, temp.getString("webPublicationDate"));
 
                 //Date date  = new Date();

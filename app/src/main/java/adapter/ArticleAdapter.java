@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         //get the text view
         TextView articleQuickTextTextView = (TextView) listItemView.findViewById(R.id.article_quick_text);
-        articleQuickTextTextView.setText((theArticle.getQuickInfo()));
+        // articleQuickTextTextView.setText((theArticle.getQuickInfo()));
+        String text = simpleTextFormat(theArticle.getQuickInfo());
+        articleQuickTextTextView.setText(text);
 
         //get the img view
         //ImageView articleThumbnail = (ImageView) listItemView.findViewById(R.id.article_img);
@@ -75,6 +78,18 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         Date tempDate = currentArticle.getDateOfArticle();
 
         return sdf.format(tempDate);
+    }
+
+    private String simpleTextFormat(String quickText) {
+        String regex = "<strong>(.*?)<\\/strong>";
+
+        String[] split = quickText.split(regex);
+
+        for (int i = 0; i < split.length; i++) {
+            Log.e("" + i, split[i]);
+        }
+
+        return split[split.length - 1];
     }
 
 
