@@ -52,7 +52,24 @@
         android:layout_marginRight="5dp"
         android:layout_toEndOf="@id/article_author"
         android:gravity="center_horizontal"
+        android:textSize="16sp"
         tools:text="section" />
+
+    <TextView
+        android:id="@+id/article_quick_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_author"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textSize="16sp"
+        tools:text="quick text" />
+
+    <ImageView
+        android:id="@+id/article_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/article_quick_text" />
 
 
 </RelativeLayout>

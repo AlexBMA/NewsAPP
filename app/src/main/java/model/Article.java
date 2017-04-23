@@ -13,9 +13,13 @@ public class Article {
     private String url;
     private String author;
     private String sectionName;
+    private String quickInfo;
+    private String thumnailUrl;
 
     public Article() {
+        dateOfArticle = new Date();
     }
+
 
     public String getTitle() {
         return title;
@@ -55,6 +59,23 @@ public class Article {
 
     public void setSectionName(String sectionName) {
         this.sectionName = sectionName;
+    }
+
+
+    public String getQuickInfo() {
+        return quickInfo;
+    }
+
+    public void setQuickInfo(String quickInfo) {
+        this.quickInfo = quickInfo;
+    }
+
+    public String getThumnailUrl() {
+        return thumnailUrl;
+    }
+
+    public void setThumnailUrl(String thumnailUrl) {
+        this.thumnailUrl = thumnailUrl;
     }
 }
 

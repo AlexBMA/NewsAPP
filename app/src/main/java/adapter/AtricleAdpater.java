@@ -54,8 +54,18 @@ public class AtricleAdpater extends ArrayAdapter<Article> {
         TextView articleAuthorTextView = (TextView) listItemView.findViewById(R.id.article_author);
         articleAuthorTextView.setText(theArticle.getAuthor());
 
+        // get the text view
         TextView articleSectionTextView = (TextView) listItemView.findViewById(R.id.article_section);
         articleSectionTextView.setText(theArticle.getSectionName());
+
+        //get the text view
+        TextView articleQuickTextTextView = (TextView) listItemView.findViewById(R.id.article_quick_text);
+        articleQuickTextTextView.setText((theArticle.getQuickInfo()));
+
+        //get the img view
+        //ImageView articleThumbnail = (ImageView) listItemView.findViewById(R.id.article_img);
+        //articleThumbnail.setImageURI(Uri.parse(theArticle.getThumnailUrl()));
+
 
         return listItemView;
     }
