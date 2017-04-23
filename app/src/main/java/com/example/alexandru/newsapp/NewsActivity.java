@@ -1,12 +1,14 @@
 package com.example.alexandru.newsapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import adapter.AtricleAdpater;
@@ -29,40 +31,30 @@ public class NewsActivity extends AppCompatActivity {
         ArticleService articleService = new ArticleService();
 
         //list of placeholder data
-        List<Article> list = articleService.getListOfArticle();
+        final List<Article> list = articleService.getListOfArticle();
 
 
         // Find a reference to the {@link ListView} in the layout
-        ListView earthquakeListView = (ListView) findViewById(R.id.list);
+        ListView newsListView = (ListView) findViewById(R.id.list);
 
 
         articleAdapter = new AtricleAdpater(this, list);
 
+        newsListView.setAdapter(articleAdapter);
 
-        earthquakeListView.setAdapter(articleAdapter);
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Article theArticle = articleAdapter.getItem(position);
+                Intent showFullArticle = new Intent(Intent.ACTION_VIEW, Uri.parse(theArticle.getUrl()));
+                startActivity(showFullArticle);
+
+            }
+        });
 
 
     }
-
-
-    private List<Article> createList(int size) {
-        List<Article> list = new ArrayList<>();
-
-
-        for (int i = 1; i < size; i++) {
-            Article t1 = new Article();
-            t1.setUrl("www.google.com");
-            t1.setDateOfArticle(new Date());
-            t1.setTitle("Title " + i);
-            t1.setAuthor("Author " + i);
-            t1.setSectionName("Section " + i);
-            list.add(t1);
-        }
-
-
-        return list;
-    }
-
 
 
 }
