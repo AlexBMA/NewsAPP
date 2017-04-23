@@ -18,6 +18,11 @@ public class Article {
 
     public Article() {
         dateOfArticle = new Date();
+        author = "";
+        title = "";
+        url = "";
+        thumnailUrl = "";
+        quickInfo = "";
     }
 
 

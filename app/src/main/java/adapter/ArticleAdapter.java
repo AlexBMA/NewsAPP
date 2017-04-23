@@ -19,10 +19,10 @@ import model.Article;
  * Created by Alexandru on 4/23/2017.
  */
 
-public class AtricleAdpater extends ArrayAdapter<Article> {
+public class ArticleAdapter extends ArrayAdapter<Article> {
 
 
-    public AtricleAdpater(Context context, List<Article> list) {
+    public ArticleAdapter(Context context, List<Article> list) {
         super(context, 0, list);
     }
 
