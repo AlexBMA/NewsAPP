@@ -6,17 +6,19 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:paddingTop="8dp">
 
     <TextView
         android:id="@+id/article_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:textSize="26sp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:textColor="@color/textOnPage"
+        android:textSize="24sp"
         tools:text="Article title" />
 
     <TextView
@@ -24,9 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/article_title"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/textOnPage"
         android:textSize="16sp"
         tools:text="Article date"
         />
@@ -36,10 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/article_date"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_toEndOf="@id/article_date"
         android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/textOnPage"
         android:textSize="16sp"
         tools:text="by Article author" />
 
@@ -48,10 +52,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/article_date"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_toEndOf="@id/article_author"
         android:gravity="center_horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/textOnPage"
         android:textSize="16sp"
         tools:text="section" />
 
@@ -60,17 +65,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/article_author"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="4dp"
+        android:textColor="@color/textOnPage"
         android:textSize="16sp"
         tools:text="quick text" />
-
-    <ImageView
-        android:id="@+id/article_img"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/article_quick_text" />
-
+    <!--
+        <ImageView
+            android:id="@+id/article_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/article_quick_text" />
+    -->
 
 </RelativeLayout>
 
