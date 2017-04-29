@@ -45,9 +45,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         // Find a reference to the {@link ListView} in the layout
         ListView newsListView = (ListView) findViewById(R.id.list);
 
-
+        //create the adapter
         articleAdapter = new ArticleAdapter(this, new ArrayList<Article>());
 
+        //set the adapter to the list
         newsListView.setAdapter(articleAdapter);
 
 
@@ -62,9 +63,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-
+        //create the loader
         LoaderManager loaderManager = getLoaderManager();
-
+        //init the loader
         loaderManager.initLoader(ID, null, this);
     }
 
