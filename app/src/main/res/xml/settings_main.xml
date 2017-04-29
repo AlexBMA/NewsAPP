@@ -6,12 +6,14 @@
         android:entries="@array/listentries"
         android:entryValues="@array/listvalues"
         android:key="@string/setting_section_key"
+        android:textColor="@color/textOnPage"
         android:title="@string/setting_section_label" />
 
     <EditTextPreference
         android:defaultValue="@string/settings_min_results_default"
         android:inputType="number"
         android:key="@string/settings_min_results_key"
+        android:textColor="@color/textOnPage"
         android:title="@string/settings_min_results_label" />
 
 

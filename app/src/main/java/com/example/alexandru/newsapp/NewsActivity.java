@@ -123,8 +123,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         Log.e("LOADER_FINISHED", "  ##");
         articleAdapter.clear();
 
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
-        // data set. This will trigger the ListView to update.
+
         if (data != null && !data.isEmpty()) {
             articleAdapter.addAll(data);
         }
@@ -149,7 +148,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     /**
-     * Menu options
+     * Menu options creates the menu activity
      *
      * @param menu
      * @return
