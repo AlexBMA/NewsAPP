@@ -19,7 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OptionsActivity"></activity>
+        <activity
+            android:name=".OptionsActivity"
+            android:label="@string/settings_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.alexandru.newsapp.OptionsActivity" />
+
+
+        </activity>
+
     </application>
 
 </manifest>
