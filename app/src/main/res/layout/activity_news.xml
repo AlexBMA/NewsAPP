@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?><!-- Layout for a list of earthquakes -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--
+
     <Button
         android:id="@+id/next_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:onClick="showMoreNews"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/invisible_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next" />
-    -->
+        android:layout_above="@id/next_button"
+        android:text="Text"
+        android:visibility="invisible" />
+
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/invisible_button"
         android:divider="@null"
-        android:dividerHeight="0dp"
         android:orientation="vertical" />
 
 
-</LinearLayout>
+</RelativeLayout>
 
 

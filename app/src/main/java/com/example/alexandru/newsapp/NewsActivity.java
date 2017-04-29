@@ -18,7 +18,6 @@ import java.util.List;
 import adapter.ArticleAdapter;
 import loader.ArticleLoader;
 import model.Article;
-import services.ArticleService;
 
 public class NewsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
@@ -27,18 +26,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private final String REQUEST_URL = "http://content.guardianapis.com/search?show-elements=image&show-fields=all&page-size=10&order-by=relevance&q=France&api-key=3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
     private ArrayAdapter<Article> articleAdapter;
 
+    private int nrOfItems = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-
-
-        ArticleService articleService = new ArticleService();
-
-
-        //list of placeholder data
-        // final List<Article> list = articleService.getListOfArticle(testRequestString);
 
 
         // Find a reference to the {@link ListView} in the layout
@@ -61,6 +55,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
+
         LoaderManager loaderManager = getLoaderManager();
 
         loaderManager.initLoader(ID, null, this);
@@ -69,6 +64,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onResume() {
         super.onResume();
+
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.restartLoader(ID, null, this);
+
     }
 
     @Override
@@ -86,12 +85,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         String key = "3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
         //http://content.guardianapis.com/search?show-elements=image&show-fields=all&page-size=10&order-by=relevance&q=world&api-key=3ca5b220-376f-4bc4-b5f9-ca8840c0cef9
 
+
         Uri baseUri = Uri.parse(newUrl);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("show-elements", "image");
         uriBuilder.appendQueryParameter("show-fields", "all");
-        uriBuilder.appendQueryParameter("page-size", "10");
-        uriBuilder.appendQueryParameter("q", "world");
+        uriBuilder.appendQueryParameter("page-size", nrOfItems + "");
+        // uriBuilder.appendQueryParameter("q", "world");
         uriBuilder.appendQueryParameter("api-key", key);
 
         return new ArticleLoader(this, uriBuilder.toString());
@@ -112,5 +112,17 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<List<Article>> loader) {
         articleAdapter.clear();
+    }
+
+
+    /**
+     * Adds more news items
+     */
+    public void showMoreNews(View v) {
+
+        nrOfItems = nrOfItems + 10;
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.restartLoader(ID, null, this);
+
     }
 }
