@@ -25,15 +25,16 @@ import model.Article;
 
 public class NewsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
-
+    public static final String MyPREFERENCES = "MyPrefs";
     private final int ID = 1;
+    SharedPreferences sharedpreferences;
     private String newUrl = "http://content.guardianapis.com/search?";
     private String key = "3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
     private ArrayAdapter<Article> articleAdapter;
-
     private int nrOfItems = 10;
     private String sectionOfArticle = "world";
     private int sw = 0;
+    private int sw2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onResume() {
         super.onResume();
         // Log.e("RESUME","##$$");
+
+
+        // sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        //  sw = sharedpreferences.getInt("sw",1);
+        // sw2 = sharedpreferences.getInt("sw2",1);
+        // sectionOfArticle = sharedpreferences.getString("section","world");
         Log.e("SW RESUME", sw + "");
+
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(ID, null, this);
 
@@ -83,8 +91,18 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onPause() {
         super.onPause();  // Always call the superclass method first
         // Log.e("PAUSE","##");
-        sw = 1;
+
+        //  sw = 1;
+        //  sw2 = 1;
         Log.e("SW PAUSE", sw + "");
+        //  SharedPreferences.Editor editor = sharedpreferences.edit();
+        //   editor.putInt("sw", sw);
+        //  editor.putString("section",sectionOfArticle);
+        //  editor.putInt("sw2",sw2);
+        //   editor.commit();
+
+
+
 
 
     }
@@ -112,14 +130,14 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.setting_section_key),
                 "world");
 
-        Log.e("SW", sw + "");
+        // Log.e("SW", sw + "");
+
         if (sw == 0) nrOfItems = Integer.parseInt(minResults);
-
         sectionOfArticle = section;
-        sw = 0;
 
-        Log.e("NR ITEM", nrOfItems + "");
-        Log.e("SECTION", section);
+
+        // Log.e("NR ITEM", nrOfItems + "");
+        // Log.e("SECTION", section);
 
 
         Uri baseUri = Uri.parse(newUrl);
