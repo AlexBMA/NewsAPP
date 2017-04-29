@@ -2,5 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title">
 
+    <ListPreference
+        android:entries="@array/listentries"
+        android:entryValues="@array/listvalues"
+        android:key="@string/setting_section_key"
+        android:title="@string/setting_section_label" />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_min_results_default"
+        android:inputType="number"
+        android:key="@string/settings_min_results_key"
+        android:title="@string/settings_min_results_label" />
+
 
 </PreferenceScreen>

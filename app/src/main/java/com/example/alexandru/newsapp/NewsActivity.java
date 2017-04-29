@@ -3,8 +3,10 @@ package com.example.alexandru.newsapp;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -29,6 +31,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     private ArrayAdapter<Article> articleAdapter;
 
     private int nrOfItems = 10;
+    private String sectionOfArticle = "world";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,13 +90,29 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         String key = "3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
         //http://content.guardianapis.com/search?show-elements=image&show-fields=all&page-size=10&order-by=relevance&q=world&api-key=3ca5b220-376f-4bc4-b5f9-ca8840c0cef9
 
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String minResults = sharedPrefs.getString(
+                getString(R.string.settings_min_results_key),
+                getString(R.string.settings_min_results_default));
+
+        String section = sharedPrefs.getString(
+                getString(R.string.setting_section_key),
+                "world");
+
+        nrOfItems = Integer.parseInt(minResults);
+        sectionOfArticle = section.toLowerCase();
+
+
+        Log.e("NR ITEM", nrOfItems + "");
+        Log.e("SECTION", section);
 
         Uri baseUri = Uri.parse(newUrl);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("show-elements", "image");
         uriBuilder.appendQueryParameter("show-fields", "all");
         uriBuilder.appendQueryParameter("page-size", nrOfItems + "");
-        // uriBuilder.appendQueryParameter("q", "world");
+        uriBuilder.appendQueryParameter("section", sectionOfArticle);
         uriBuilder.appendQueryParameter("api-key", key);
 
         return new ArticleLoader(this, uriBuilder.toString());
@@ -118,7 +137,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     /**
-     * Adds more news items
+     * Adds more news items to the view
      */
     public void showMoreNews(View v) {
 
@@ -128,6 +147,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
+
+    /**
+     * Menu options
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
