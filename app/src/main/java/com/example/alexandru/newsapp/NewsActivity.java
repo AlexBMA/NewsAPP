@@ -27,11 +27,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     private final int ID = 1;
-    private final String REQUEST_URL = "http://content.guardianapis.com/search?show-elements=image&show-fields=all&page-size=10&order-by=relevance&q=France&api-key=3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
+    private String newUrl = "http://content.guardianapis.com/search?";
+    private String key = "3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
     private ArrayAdapter<Article> articleAdapter;
 
     private int nrOfItems = 10;
     private String sectionOfArticle = "world";
+    private int sw = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +71,24 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onResume() {
         super.onResume();
-
+        // Log.e("RESUME","##$$");
+        Log.e("SW RESUME", sw + "");
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(ID, null, this);
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+        // Log.e("PAUSE","##");
+        sw = 1;
+        Log.e("SW PAUSE", sw + "");
+
+
+    }
+
+
 
     @Override
     protected void onStop() {
@@ -86,10 +101,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Log.e("LOADER_CREATE", "  ##");
 
-        String newUrl = "http://content.guardianapis.com/search?";
-        String key = "3ca5b220-376f-4bc4-b5f9-ca8840c0cef9";
-        //http://content.guardianapis.com/search?show-elements=image&show-fields=all&page-size=10&order-by=relevance&q=world&api-key=3ca5b220-376f-4bc4-b5f9-ca8840c0cef9
-
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         String minResults = sharedPrefs.getString(
@@ -100,12 +111,15 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.setting_section_key),
                 "world");
 
-        nrOfItems = Integer.parseInt(minResults);
-        sectionOfArticle = section.toLowerCase();
+        Log.e("SW", sw + "");
+        if (sw == 0) nrOfItems = Integer.parseInt(minResults);
 
+        sectionOfArticle = section;
+        sw = 0;
 
         Log.e("NR ITEM", nrOfItems + "");
         Log.e("SECTION", section);
+
 
         Uri baseUri = Uri.parse(newUrl);
         Uri.Builder uriBuilder = baseUri.buildUpon();
@@ -141,8 +155,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     public void showMoreNews(View v) {
 
         nrOfItems = nrOfItems + 10;
+        sw = 1;
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.restartLoader(ID, null, this);
+
 
     }
 

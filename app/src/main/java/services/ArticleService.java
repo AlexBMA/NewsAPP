@@ -67,13 +67,13 @@ public class ArticleService {
                 temp2 = temp.getJSONObject("fields");
                 article.setQuickInfo(temp2.getString("trailText"));
                 //article.setThumnailUrl(temp2.getString("thumbnail"));
-                Log.e("date " + i, temp.getString("webPublicationDate"));
+                Log.e("date " + i, temp.getString("webTitle"));
 
                 //Date date  = new Date();
                 list.add(article);
             }
 
-            Log.e("&&", list.toString());
+            // Log.e("&&", list.toString());
             return list;
 
         } catch (JSONException e) {

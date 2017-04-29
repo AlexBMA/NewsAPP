@@ -4,10 +4,9 @@
     <string-array name="listentries">
         <item>World</item>
         <item>Uk</item>
-        <item>Sports</item>
+        <item>Sport</item>
         <item>Culture</item>
         <item>Business</item>
-        <item>Culture</item>
         <item>Lifestyle</item>
         <item>Fashion</item>
         <item>Environment</item>
@@ -16,18 +15,17 @@
         <item>Travel</item>
     </string-array>
     <string-array name="listvalues">
-        <item>World</item>
-        <item>Uk</item>
-        <item>Sports</item>
-        <item>Culture</item>
-        <item>Business</item>
-        <item>Culture</item>
-        <item>Lifestyle</item>
-        <item>Fashion</item>
-        <item>Environment</item>
-        <item>Tech</item>
-        <item>Money</item>
-        <item>Travel</item>
+        <item>world</item>
+        <item>uk-news</item>
+        <item>sport</item>
+        <item>culture</item>
+        <item>business</item>
+        <item>lifeandstyle</item>
+        <item>fashion</item>
+        <item>environment</item>
+        <item>technology</item>
+        <item>money</item>
+        <item>travel</item>
     </string-array>
 
 

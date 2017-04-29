@@ -1,7 +1,6 @@
 package adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +72,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         return listItemView;
     }
 
+    /**
+     * Converts the date into a useful format
+     *
+     * @param currentArticle
+     * @return
+     */
     private String simpleDateFormat(Article currentArticle) {
         SimpleDateFormat sdf = new SimpleDateFormat("LLL dd, yyyy");
         Date tempDate = currentArticle.getDateOfArticle();
@@ -80,15 +85,21 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         return sdf.format(tempDate);
     }
 
+    /**
+     * Splits the text because there are some strong tags in the text
+     * @param quickText
+     * @return
+     */
+
     private String simpleTextFormat(String quickText) {
         String regex = "<strong>(.*?)<\\/strong>";
 
         String[] split = quickText.split(regex);
 
-        for (int i = 0; i < split.length; i++) {
+      /*  for (int i = 0; i < split.length; i++) {
             Log.e("" + i, split[i]);
         }
-
+        */
         return split[split.length - 1];
     }
 
